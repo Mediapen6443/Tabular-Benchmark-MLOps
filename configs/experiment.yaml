@@ -5,7 +5,4 @@ learning_rate: 0.01
 test_size: 0.25
 verbose: false
 log_interval: 5
-wandb_project: "tabular-benchmark-mlops-experiment"
-wandb_entity: "bbrodeau-home-labs-inc"
-
-
+wandb_project: "tabular-benchmark-experiment"
