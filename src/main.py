@@ -1,4 +1,7 @@
+"""Tabular Benchmark MLOps - Main Entry Point."""
+
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -22,6 +25,7 @@ def load_config(config_path: str) -> dict:
 
 
 def parse_args():
+    """Parse command line arguments."""
     parser = argparse.ArgumentParser(description="Tabular Benchmark MLOps")
     parser.add_argument(
         "--task",
@@ -43,6 +47,7 @@ def parse_args():
 
 
 def main():
+    """Main entry point."""
     args = parse_args()
     config = load_config(args.config)
 
@@ -55,15 +60,15 @@ def main():
     setup_logging()
 
     if args.offline:
-        import os
-
         os.environ["WANDB_MODE"] = "offline"
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     logger.info(f"Using device: {device}")
 
     X_train, X_test, y_train, y_test, _ = generate_data(
-        task=args.task, seed=config["seed"], test_size=config["test_size"]
+        task=args.task,
+        seed=config["seed"],
+        test_size=config["test_size"],
     )
 
     models = ["sklearn", "xgboost", "pytorch"] if args.model == "all" else [args.model]

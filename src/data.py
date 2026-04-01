@@ -1,3 +1,5 @@
+"""Data generation and preprocessing."""
+
 import numpy as np
 import torch
 from sklearn.datasets import make_classification, make_regression

@@ -1,5 +1,4 @@
-import numpy as np
-import torch
+"""Training pipeline with W&B logging."""
 
 import wandb
 from src.evaluate import evaluate_model
@@ -10,7 +9,14 @@ logger = get_logger(__name__)
 
 
 def train_pipeline(
-    model_name: str, task: str, X_train, X_test, y_train, y_test, config, device
+    model_name: str,
+    task: str,
+    X_train,
+    X_test,
+    y_train,
+    y_test,
+    config,
+    device,
 ):
     """Full training and evaluation pipeline."""
     input_dim = X_train.shape[1]
@@ -19,7 +25,7 @@ def train_pipeline(
     run_name = f"{task}_{model_name}"
     wandb.init(
         project=config["wandb_project"],
-        entity=config["wandb_entity"],
+        entity=config.get("wandb_entity"),
         name=run_name,
         config={
             "model": model_name,
