@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![CI](https://github.com/valorisa/tabular-benchmark-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/valorisa/tabular-benchmark-mlops/actions/workflows/ci.yml)
+[![CI](https://github.com/valorisa/Tabular-Benchmark-MLOps/actions/workflows/ci.yml/badge.svg)](https://github.com/valorisa/Tabular-Benchmark-MLOps/actions/workflows/ci.yml)
 
 ## 🎯 Objectif du Projet
 
@@ -29,80 +29,109 @@ Assurez-vous d'avoir les outils suivants installés :
 
 Ouvrez **PowerShell 7** et naviguez vers le projet :
 
-`powershell
+```powershell
 cd C:\Users\bbrod\Projets\tabular-benchmark-mlops
-`
+```
 
 Créez un environnement virtuel et activez-le :
 
-`powershell
+```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-`
+```
 
 Installez les dépendances :
 
-`powershell
+```powershell
 pip install --upgrade pip
 pip install -r requirements.txt
 pip install -e .
-`
+```
 
 ### 3. Configuration Weights & Biases
 
 Connectez-vous à W&B :
 
-`powershell
+```powershell
 wandb login
-`
+```
 
-*Pour tester sans compte, ajoutez le flag --offline.*
+*Pour tester sans compte, ajoutez le flag `--offline`.*
 
 ### 4. Lancement du Benchmark
 
 #### Classification (XGBoost)
 
-`powershell
+```powershell
 python src/main.py --task classification --model xgboost --epochs 100
-`
+```
 
 #### Régression (PyTorch)
 
-`powershell
+```powershell
 python src/main.py --task regression --model pytorch --epochs 50
-`
+```
 
 #### Benchmark Complet
 
-`powershell
+```powershell
 python src/main.py --task classification --model all --epochs 100
-`
+```
 
 ## 📂 Structure du Projet
 
-`	ext
+```text
 .
-├── configs/            # Fichiers de configuration YAML
-├── src/                # Code source principal
-│   ├── main.py         # Point d'entrée CLI
-│   ├── data.py         # Génération et preprocessing
-│   ├── models.py       # Définition des modèles
-│   ├── train.py        # Boucle d'entraînement
-│   └── evaluate.py     # Métriques et évaluation
-├── tests/              # Tests unitaires
-├── .github/            # Workflows CI et templates
-└── README.md
-`
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md
+│   │   └── feature_request.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows/
+│       └── ci.yml
+├── .venv/                    # Environnement virtuel (ignoré par git)
+├── backup-*/                 # Sauvegardes pre-commit (ignoré par git)
+├── configs/
+│   ├── default.yaml
+│   └── experiment.yaml
+├── docs/
+│   └── ADR.md
+├── logs/                     # Logs d'exécution (ignoré par git)
+├── models/                   # Modèles sauvegardés (ignoré par git)
+├── scripts/
+│   └── fix-ci-issues.ps1
+├── src/
+│   ├── __init__.py
+│   ├── data.py
+│   ├── evaluate.py
+│   ├── main.py
+│   ├── models.py
+│   ├── train.py
+│   └── utils.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_data.py
+│   └── test_train.py
+├── wandb/                    # W&B runs (ignoré par git)
+├── .gitignore
+├── .pre-commit-config.yaml
+├── CONTRIBUTING.md
+├── LICENSE
+├── Makefile
+├── pyproject.toml
+├── README.md
+└── requirements.txt
+```
 
 ## 🛠 Commandes Utiles (PowerShell)
 
 | Action | Commande PowerShell |
 | :--- | :--- |
-| **Installer** | pip install -e . |
-| **Tester** | pytest tests/ -v |
-| **Linter** | pre-commit run --all-files |
-| **Entraîner** | python src/main.py --task classification --model all |
-| **Nettoyer** | Remove-Item -Recurse -Force __pycache__, .venv |
+| **Installer** | `pip install -e .` |
+| **Tester** | `pytest tests/ -v` |
+| **Linter** | `pre-commit run --all-files` |
+| **Entraîner** | `python src/main.py --task classification --model all` |
+| **Nettoyer** | `Remove-Item -Recurse -Force __pycache__, .venv` |
 
 ## 📊 Métriques Suivi
 
@@ -113,9 +142,9 @@ python src/main.py --task classification --model all --epochs 100
 ## 🤝 Contribuer
 
 1.  Forker le projet
-2.  Créer une branche (git checkout -b feature/nom)
-3.  Committer (git commit -m 'Add feature')
-4.  Pusher (git push origin feature/nom)
+2.  Créer une branche (`git checkout -b feature/nom`)
+3.  Committer (`git commit -m 'Add feature'`)
+4.  Pusher (`git push origin feature/nom`)
 5.  Ouvrir une Pull Request
 
 Voir [CONTRIBUTING.md](CONTRIBUTING.md) pour les détails.
