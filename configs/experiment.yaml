@@ -6,4 +6,4 @@ test_size: 0.25
 verbose: false
 log_interval: 5
 wandb_project: "tabular-benchmark-mlops-experiment"
-wandb_entity: "valorisa"
+wandb_entity: "bbrodeau"
