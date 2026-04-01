@@ -1,0 +1,9 @@
+seed: 42
+epochs: 100
+batch_size: 32
+learning_rate: 0.001
+test_size: 0.2
+verbose: true
+log_interval: 10
+wandb_project: "tabular-benchmark-mlops"
+wandb_entity: "valorisa"
