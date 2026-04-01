@@ -8,6 +8,7 @@ from pathlib import Path
 import torch
 import yaml
 
+# Add src to path for imports
 src_path = Path(__file__).resolve().parent
 sys.path.insert(0, str(src_path.parent))
 
