@@ -102,7 +102,7 @@ Ce comportement est une **sécurité** plutôt qu'un bug :
 
 -   📖 **[README.md](README.md)** - Documentation complète
 -   🐛 **[Issues](https://github.com/valorisa/Tabular-Benchmark-MLOps/issues)** - Signaler un bug
--   💡 **[Feature Request](https://github.com/valorisa/Tabular-Benchmark-MLOps/issues)** - Suggérer une idée
+-   💡 **[Feature Request](https://github.com/valorisa/Tabular-Benchmark-MLOps/pulls)** - Suggérer une idée
 
 ---
 
