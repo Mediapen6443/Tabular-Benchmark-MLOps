@@ -50,3 +50,9 @@ Thumbs.db
 .pytest_cache/
 .coverage
 htmlcov/
+# W&B runs
+wandb/offline-run-*
+wandb/run-*
+wandb/latest-run
+wandb/debug-internal.log
+wandb/debug-cli.*.log
