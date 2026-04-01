@@ -3,9 +3,11 @@ import torch.nn as nn
 import torch.optim as optim
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from xgboost import XGBClassifier, XGBRegressor
+
 from src.utils import get_logger
 
 logger = get_logger(__name__)
+
 
 class MLP(nn.Module):
     """Simple Multi-Layer Perceptron for Tabular Data."""
@@ -18,11 +20,12 @@ class MLP(nn.Module):
             nn.Dropout(0.2),
             nn.Linear(hidden_dim, hidden_dim // 2),
             nn.ReLU(),
-            nn.Linear(hidden_dim // 2, output_dim)
+            nn.Linear(hidden_dim // 2, output_dim),
         )
 
     def forward(self, x):
         return self.network(x)
+
 
 class ModelWrapper:
     """Unified interface for different models."""
@@ -41,7 +44,9 @@ class ModelWrapper:
 
         elif self.model_name == "xgboost":
             if self.task == "classification":
-                return XGBClassifier(random_state=42, n_estimators=100, use_label_encoder=False)
+                return XGBClassifier(
+                    random_state=42, n_estimators=100, use_label_encoder=False
+                )
             else:
                 return XGBRegressor(random_state=42, n_estimators=100)
 
@@ -62,7 +67,9 @@ class ModelWrapper:
         self.model.fit(X_train, y_train)
         return None
 
-    def _fit_torch(self, X_train, y_train, X_val, y_val, epochs: int, lr: float, device: str):
+    def _fit_torch(
+        self, X_train, y_train, X_val, y_val, epochs: int, lr: float, device: str
+    ):
         criterion = nn.MSELoss() if self.task == "regression" else nn.CrossEntropyLoss()
         optimizer = optim.Adam(self.model.parameters(), lr=lr)
         self.model.to(device)
@@ -102,7 +109,9 @@ class ModelWrapper:
             history["val_loss"].append(val_loss.item())
 
             if (epoch + 1) % 10 == 0:
-                logger.info(f"Epoch {epoch+1}/{epochs}, Train Loss: {loss.item():.4f}, Val Loss: {val_loss.item():.4f}")
+                logger.info(
+                    f"Epoch {epoch+1}/{epochs}, Train Loss: {loss.item():.4f}, Val Loss: {val_loss.item():.4f}"
+                )
 
         return history
 

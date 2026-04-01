@@ -1,32 +1,46 @@
 import argparse
-import yaml
 import sys
-import torch
 from pathlib import Path
+
+import torch
+import yaml
 
 src_path = Path(__file__).resolve().parent
 sys.path.insert(0, str(src_path.parent))
 
-from src.utils import set_seed, setup_logging, get_logger
 from src.data import generate_data
 from src.train import train_pipeline
+from src.utils import get_logger, set_seed, setup_logging
 
 logger = get_logger(__name__)
+
 
 def load_config(config_path: str) -> dict:
     """Load YAML configuration."""
     with open(config_path, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Tabular Benchmark MLOps")
-    parser.add_argument("--task", type=str, choices=["classification", "regression"], default="classification")
-    parser.add_argument("--model", type=str, choices=["sklearn", "xgboost", "pytorch", "all"], default="all")
+    parser.add_argument(
+        "--task",
+        type=str,
+        choices=["classification", "regression"],
+        default="classification",
+    )
+    parser.add_argument(
+        "--model",
+        type=str,
+        choices=["sklearn", "xgboost", "pytorch", "all"],
+        default="all",
+    )
     parser.add_argument("--config", type=str, default="configs/default.yaml")
     parser.add_argument("--epochs", type=int, default=None)
     parser.add_argument("--seed", type=int, default=None)
     parser.add_argument("--offline", action="store_true", help="Run W&B offline")
     return parser.parse_args()
+
 
 def main():
     args = parse_args()
@@ -42,15 +56,14 @@ def main():
 
     if args.offline:
         import os
+
         os.environ["WANDB_MODE"] = "offline"
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     logger.info(f"Using device: {device}")
 
     X_train, X_test, y_train, y_test, _ = generate_data(
-        task=args.task,
-        seed=config["seed"],
-        test_size=config["test_size"]
+        task=args.task, seed=config["seed"], test_size=config["test_size"]
     )
 
     models = ["sklearn", "xgboost", "pytorch"] if args.model == "all" else [args.model]
@@ -65,10 +78,11 @@ def main():
                 y_train=y_train,
                 y_test=y_test,
                 config=config,
-                device=device
+                device=device,
             )
         except Exception as e:
             logger.error(f"Failed training {model_name}: {e}")
+
 
 if __name__ == "__main__":
     main()

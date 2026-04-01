@@ -1,8 +1,10 @@
 import numpy as np
 from sklearn.metrics import accuracy_score, f1_score, mean_squared_error, r2_score
+
 from src.utils import get_logger
 
 logger = get_logger(__name__)
+
 
 def evaluate_model(y_true, y_pred, task: str):
     """Calculate metrics based on task type."""

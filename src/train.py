@@ -1,13 +1,17 @@
-import wandb
 import numpy as np
 import torch
-from src.models import ModelWrapper
+
+import wandb
 from src.evaluate import evaluate_model
+from src.models import ModelWrapper
 from src.utils import get_logger
 
 logger = get_logger(__name__)
 
-def train_pipeline(model_name: str, task: str, X_train, X_test, y_train, y_test, config, device):
+
+def train_pipeline(
+    model_name: str, task: str, X_train, X_test, y_train, y_test, config, device
+):
     """Full training and evaluation pipeline."""
     input_dim = X_train.shape[1]
     model_wrapper = ModelWrapper(model_name, task, input_dim)
@@ -23,21 +27,26 @@ def train_pipeline(model_name: str, task: str, X_train, X_test, y_train, y_test,
             "epochs": config["epochs"],
             "lr": config["learning_rate"],
             "batch_size": config["batch_size"],
-            "seed": config["seed"]
-        }
+            "seed": config["seed"],
+        },
     )
 
     logger.info(f"Starting training for {model_name} on {task}")
 
     history = model_wrapper.fit(
-        X_train, y_train, X_test, y_test,
+        X_train,
+        y_train,
+        X_test,
+        y_test,
         epochs=config["epochs"],
         lr=config["learning_rate"],
-        device=device
+        device=device,
     )
 
     if history:
-        for epoch, (t_loss, v_loss) in enumerate(zip(history["train_loss"], history["val_loss"])):
+        for epoch, (t_loss, v_loss) in enumerate(
+            zip(history["train_loss"], history["val_loss"])
+        ):
             wandb.log({"train_loss": t_loss, "val_loss": v_loss, "epoch": epoch})
 
     y_pred = model_wrapper.predict(X_test)

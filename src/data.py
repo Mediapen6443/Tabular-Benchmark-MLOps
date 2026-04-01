@@ -1,9 +1,10 @@
 import numpy as np
+import torch
 from sklearn.datasets import make_classification, make_regression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from torch.utils.data import Dataset, DataLoader
-import torch
+from torch.utils.data import DataLoader, Dataset
+
 
 class TabularDataset(Dataset):
     """PyTorch Dataset for tabular data."""
@@ -18,6 +19,7 @@ class TabularDataset(Dataset):
     def __getitem__(self, idx: int):
         return self.features[idx], self.targets[idx]
 
+
 def generate_data(task: str, seed: int, test_size: float):
     """Generate synthetic data based on task type."""
     if task == "classification":
@@ -26,7 +28,7 @@ def generate_data(task: str, seed: int, test_size: float):
             n_features=20,
             n_informative=15,
             n_redundant=5,
-            random_state=seed
+            random_state=seed,
         )
     elif task == "regression":
         X, y = make_regression(
@@ -34,7 +36,7 @@ def generate_data(task: str, seed: int, test_size: float):
             n_features=20,
             n_informative=15,
             noise=0.1,
-            random_state=seed
+            random_state=seed,
         )
     else:
         raise ValueError(f"Task {task} not supported.")
@@ -48,6 +50,7 @@ def generate_data(task: str, seed: int, test_size: float):
     X_test = scaler.transform(X_test)
 
     return X_train, X_test, y_train, y_test, scaler
+
 
 def get_dataloaders(X_train, X_test, y_train, y_test, batch_size: int):
     """Create PyTorch DataLoaders."""
