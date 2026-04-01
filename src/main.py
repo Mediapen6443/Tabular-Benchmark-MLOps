@@ -8,13 +8,12 @@ from pathlib import Path
 import torch
 import yaml
 
-# Add src to path for imports
 src_path = Path(__file__).resolve().parent
 sys.path.insert(0, str(src_path.parent))
 
-from src.data import generate_data
-from src.train import train_pipeline
-from src.utils import get_logger, set_seed, setup_logging
+from src.data import generate_data  # noqa: E402
+from src.train import train_pipeline  # noqa: E402
+from src.utils import get_logger, set_seed, setup_logging  # noqa: E402
 
 logger = get_logger(__name__)
 
