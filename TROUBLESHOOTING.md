@@ -370,26 +370,26 @@ Get-Content ".github/workflows/ci.yml" | Select-String "actions/"
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
-│  RÈGLES D'OR POUR ÉVITER CES PROBLÈMES                    │
+│  RÈGLES D'OR POUR ÉVITER CES PROBLÈMES                      │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  1. TOUJOURS spécifier les args dans .pre-commit-config.yaml│
-│     → Ne pas compter sur pyproject.toml seul               │
+│     → Ne pas compter sur pyproject.toml seul                │
 │                                                             │
-│  2. Tester pre-commit run --all-files LOCALEMENT avant push│
-│     → Évite les échecs CI inattendus                       │
+│  2. Tester pre-commit run --all-files LOCALEMENT avant push │
+│     → Évite les échecs CI inattendus                        │
 │                                                             │
-│  3. Utiliser Unix (LF) line endings pour CI/CD            │
-│     → Notepad++ : Édition → EOL Conversion → Unix (LF)    │
+│  3. Utiliser Unix (LF) line endings pour CI/CD              │
+│     → Notepad++ : Édition → EOL Conversion → Unix (LF)      │
 │                                                             │
-│  4. Délimiteurs PowerShell : @' et '@ SEULS sur leur ligne │
-│     → Sortie d'urgence : Ctrl+C                            │
+│  4. Délimiteurs PowerShell : @' et '@ SEULS sur leur ligne  │
+│     → Sortie d'urgence : Ctrl+C                             │
 │                                                             │
-│  5. Mettre à jour les GitHub Actions régulièrement        │
-│     → actions/checkout@v4, setup-python@v5                │
+│  5. Mettre à jour les GitHub Actions régulièrement          │
+│     → actions/checkout@v4, setup-python@v5                  │
 │                                                             │
-│  6. Documenter les problèmes rencontrés                   │
-│     → Aide les futurs contributeurs                        │
+│  6. Documenter les problèmes rencontrés                     │
+│     → Aide les futurs contributeurs                         │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -400,7 +400,7 @@ Get-Content ".github/workflows/ci.yml" | Select-String "actions/"
 
 - 📖 **[README.md](README.md)** - Documentation complète
 - 🐛 **[Issues](https://github.com/valorisa/Tabular-Benchmark-MLOps/issues)** - Signaler un bug
-- 💡 **[Feature Request](https://github.com/valorisa/Tabular-Benchmark-MLOps/issues)** - Suggérer une idée
+- 💡 **[Feature Request](https://github.com/valorisa/Tabular-Benchmark-MLOps/pulls)** - Suggérer une idée
 
 ---
 
